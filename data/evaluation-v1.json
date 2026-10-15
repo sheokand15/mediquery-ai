@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "notice": "Synthetic-only benchmark. Local semantic scoring is an offline token-vector baseline, not the configured production embedding service.",
+  "chunks": [
+    {"id":"cbc-hemoglobin","text":"Complete blood count dated 2026-01-12. Hemoglobin: 13.4 g/dL. Reference range: 12.0–15.5 g/dL."},
+    {"id":"cbc-wbc","text":"Complete blood count dated 2026-01-12. White blood cell count: 6.1 x10^9/L."},
+    {"id":"metabolic-glucose","text":"Metabolic panel dated 2026-02-03. Fasting glucose: 92 mg/dL. Reference range: 70–99 mg/dL."},
+    {"id":"vitamin-d","text":"Vitamin D, 25-hydroxy dated 2026-02-03: 28 ng/mL. The report lists a reference value above 30 ng/mL."},
+    {"id":"metabolic-creatinine","text":"Metabolic panel dated 2026-02-03. Creatinine: 0.8 mg/dL."}
+  ],
+  "examples": [
+    {"question":"What hemoglobin value is recorded?","relevant":["cbc-hemoglobin"],"category":"exact-value","answerable":true},
+    {"question":"What was the fasting glucose on February 3, 2026?","relevant":["metabolic-glucose"],"category":"date-lookup","answerable":true},
+    {"question":"Which excerpt mentions vitamin D?","relevant":["vitamin-d"],"category":"term-lookup","answerable":true},
+    {"question":"What medication dose is prescribed?","relevant":[],"category":"missing-information","answerable":false}
+  ]
+}
+
