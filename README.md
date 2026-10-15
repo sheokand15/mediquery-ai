@@ -2,9 +2,12 @@
 
 Evidence-grounded medical document intelligence for understanding information explicitly stated in a user's own reports. This project demonstrates authenticated ingestion, page-aware chunking, hybrid lexical/semantic retrieval, Reciprocal Rank Fusion, and answers with source citations. It is **not** a clinical decision support system and must not be used for diagnosis or treatment.
 
+**Live app:** [medi-query-ai-mu.vercel.app](https://medi-query-ai-mu.vercel.app)  
+**Contact:** [lavyasheokand2@gmail.com](mailto:lavyasheokand2@gmail.com)
+
 ## Status
 
-This repository has an implemented application foundation and MVP workflows. A fully configured end-to-end run requires a Supabase project and Gemini API key. The application has not been deployed. No real patient data or API credentials belong in this repository.
+The MVP is deployed on Vercel and uses Supabase and Gemini. No real patient data or API credentials belong in this repository.
 
 ## Architecture
 
@@ -120,11 +123,7 @@ GitHub Actions runs lint, typecheck, and unit tests. Playwright is a development
 
 ## Deployment (Vercel + Supabase)
 
-1. Create a Supabase project and apply the migration.
-2. Configure Auth site URL and allowed redirects for the Vercel domain.
-3. Import the repository into Vercel as a Next.js app.
-4. Set the variables from `.env.example` in Vercel settings. Keep server secrets private.
-5. Deploy, then verify signup, confirmation, upload, deletion, retrieval, and abstention with synthetic documents.
+The production app is deployed at [medi-query-ai-mu.vercel.app](https://medi-query-ai-mu.vercel.app). Vercel is connected to this GitHub repository and deploys pushed commits. The required environment variables are configured in Vercel; keep server secrets private. Supabase Auth is configured with the production URL and localhost redirect. Verify signup, confirmation, upload, deletion, retrieval, and abstention with synthetic documents before broader use.
 
 `vercel.json` declares the Next.js framework. Service-role operations happen only after server-side authentication and explicit `user_id` scoping. Review access policies and retention requirements before handling sensitive documents.
 
@@ -144,7 +143,7 @@ GitHub Actions runs lint, typecheck, and unit tests. Playwright is a development
 - Extension, MIME, size, PDF signature, and UTF-8 are validated. Scanned PDFs need OCR, not configured here.
 - Report text is not written to application logs. Gemini Free Tier data may be used to improve Google products. Use only synthetic or de-identified reports and review Google current terms before processing sensitive documents.
 - RRF avoids mixing uncalibrated lexical and vector scores. Abstention is model-led unless retrieval is empty; this heuristic needs stronger evaluation.
-- No clinical validation, accuracy claim, external security audit, production deployment, or E2E run is claimed.
+- No clinical validation, accuracy claim, external security audit, or E2E run is claimed.
 
 ## Roadmap
 
